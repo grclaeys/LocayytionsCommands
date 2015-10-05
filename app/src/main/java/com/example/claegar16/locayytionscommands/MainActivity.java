@@ -1,84 +1,126 @@
 package com.example.claegar16.locayytionscommands;
 
-import android.media.audiofx.Equalizer;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Intent;
+import android.content.IntentSender;
+import android.location.Location;
 import android.os.Bundle;
-import android.speech.RecognizerIntent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+import android.widget.TextView;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.common.ConnectionResult;
+//import com.google.android.gms.common.GooglePlayServicesClient;
+//import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 
 public class MainActivity extends AppCompatActivity {
+    private GoogleMap mMap;
+    private GoogleApiClient mGooleApiClient;
+    private double myLat;
+    private double myLong;
+
+    public double getMyLat(){
+        return myLat;
+    }
+
+    public double getMyLong(){
+        return myLong;
+    }
+
+    public void setMyLat(double myLat) {
+        myLat = this.myLat;
+    }
+
+    public void setMyLong(double myLong) {
+        myLong = this.myLong;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Fragment main = new MainFragment();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame, main);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.addToBackStack(null);
-        ft.commit();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        switch (id) {
-            case R.id.action_done:
 
-                Bundle args = new Bundle();
-                args.putString("Menu", "You pressed done button.");
-                Fragment detail = new TextFragment();
-                detail.setArguments(args);
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
-
-                return true;
-            case R.id.action_settings:
-                Toast.makeText(getApplicationContext(),"Settings Clicked",Toast.LENGTH_SHORT).show();
-                Intent ayyIntent = new Intent(this, Equalizer.Settings.class);
-                startActivity(ayyIntent);
-                return true;
-            case R.id.action_status:
-                Toast.makeText(getApplicationContext(),"Status Clicked",Toast.LENGTH_SHORT).show();
-                Intent launchStatus = new Intent(this, About.class);
-                startActivity(launchStatus);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
         }
+
+        return super.onOptionsItemSelected(item);
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1234 && resultCode == RESULT_OK) {
-            String voice_text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0);
-            Toast.makeText(getApplicationContext(),voice_text,Toast.LENGTH_LONG).show();
 
-        }
+    public void storeLocation(View view) {
+
+
+
+
+
+
+
+
+
+//        setContentView(R.layout.activity_main);
+
+        // 2. get reference to TextView
+//        txtLong = (TextView) findViewById(R.id.txtLong);
+//        txtLat = (TextView) findViewById(R.id.txtLat);
+//
+//        // 3. create LocationClient
+//        mLocationClient = new LocationClient(this, this, this);
+//
+//        // 4. create & set LocationRequest for Location update
+//        mLocationRequest = LocationRequest.create();
+//        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+//        // Set the update interval to 5 seconds
+//        mLocationRequest.setInterval(1000 * 5);
+//        // Set the fastest update interval to 1 second
+//        mLocationRequest.setFastestInterval(1000 * 1);
+
+
+//        mGooleApiClient = new GoogleApiClient.Builder.(this);
+
+//        LocationRequest = LocationRequest.create()
+//            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+//            .setInterval(10 *1000)
+//            .setFastestInterval(1 * 1000);
+
+
+
+
+//        myLat = location.getLatitude();
+//        myLong=
+//        LatLng myLocation = new LatLng(myLat, myLong);
+
     }
 }
