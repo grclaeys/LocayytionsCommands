@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
+
 public class MapsActivity extends FragmentActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -72,9 +73,9 @@ public class MapsActivity extends FragmentActivity implements
         double currentLongitude = location.getLongitude();
         LatLng latLng = new LatLng(currentLatitude, currentLongitude);
 
-        if((Math.abs(currentLatitude - issyLat) < 1) && (Math.abs(currentLongitude - issyLong) < 1)){
+       // if((Math.abs(currentLatitude - issyLat) < 1) && (Math.abs(currentLongitude - issyLong) < 1)){
             //vibrate on, sound off
-        }
+        //}
 
 
         MarkerOptions options = new MarkerOptions()
@@ -162,13 +163,7 @@ public class MapsActivity extends FragmentActivity implements
 
         handleNewLocation(location);
     }
-
-    public LatLng getLocation(Location location){
-        double lat = location.getLatitude();
-        double lon = location.getLongitude();
-
-        return new LatLng(lat, lon);
-    }
+    
 }
 
 
