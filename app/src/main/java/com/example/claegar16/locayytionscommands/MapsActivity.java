@@ -17,23 +17,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-
-import android.content.IntentSender;
-import android.location.Location;
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
-import android.util.Log;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 public class MapsActivity extends FragmentActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -44,6 +27,7 @@ public class MapsActivity extends FragmentActivity implements
     public static final String TAG = MapsActivity.class.getSimpleName();
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private LocationRequest LocationRequest;
+
     public double issyLat = 47.5223;
     public double issyLong = 122.0288;
     public LatLng issy = new LatLng(issyLat, issyLong);
@@ -58,6 +42,8 @@ public class MapsActivity extends FragmentActivity implements
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
+
+
         // Create the LocationRequest object
         LocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
@@ -175,6 +161,13 @@ public class MapsActivity extends FragmentActivity implements
     public void onLocationChanged(Location location) {
 
         handleNewLocation(location);
+    }
+
+    public LatLng getLocation(Location location){
+        double lat = location.getLatitude();
+        double lon = location.getLongitude();
+
+        return new LatLng(lat, lon);
     }
 }
 
