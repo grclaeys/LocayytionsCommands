@@ -163,7 +163,13 @@ public class MapsActivity extends FragmentActivity implements
 
         handleNewLocation(location);
     }
-    
+
+    public LatLng getLocation(Location location){
+        double lat = location.getLatitude();
+        double lon = location.getLongitude();
+
+        return new LatLng(lat, lon);
+    }
 }
 
 
