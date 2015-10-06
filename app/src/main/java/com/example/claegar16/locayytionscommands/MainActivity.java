@@ -34,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
     private GoogleApiClient mGooleApiClient;
     private double myLat;
     private double myLong;
+    protected LocationRequest mLocationRequest;
+    public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
+    public static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
+            UPDATE_INTERVAL_IN_MILLISECONDS / 2;
+    protected GoogleApiClient mGoogleApiClient;
+    protected static final String TAG = "location-updates-sample";
+
 
     public double getMyLat(){
         return myLat;
@@ -80,47 +87,30 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void storeLocation(View view) {
 
+//    protected void startLocationUpdates() {
+//        LocationServices.FusedLocationApi.requestLocationUpdates(
+//                mGoogleApiClient, mLocationRequest, this);
+//    }
 
+//    protected synchronized void buildGoogleApiClient() {
+//        Log.i(TAG, "Building GoogleApiClient");
+//        mGoogleApiClient = new GoogleApiClient.Builder(this)
+//                .addConnectionCallbacks(this)
+//                .addOnConnectionFailedListener(this)
+//                .addApi(LocationServices.API)
+//                .build();
+//        createLocationRequest();
+//    }
 
-
-
-
-
-
-
-//        setContentView(R.layout.activity_main);
-
-        // 2. get reference to TextView
-//        txtLong = (TextView) findViewById(R.id.txtLong);
-//        txtLat = (TextView) findViewById(R.id.txtLat);
-//
-//        // 3. create LocationClient
-//        mLocationClient = new LocationClient(this, this, this);
-//
-//        // 4. create & set LocationRequest for Location update
-//        mLocationRequest = LocationRequest.create();
+//    protected void createLocationRequest() {
+//        mLocationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
+//        mLocationRequest.setFastestInterval(FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS);
 //        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-//        // Set the update interval to 5 seconds
-//        mLocationRequest.setInterval(1000 * 5);
-//        // Set the fastest update interval to 1 second
-//        mLocationRequest.setFastestInterval(1000 * 1);
+//    }
 
 
-//        mGooleApiClient = new GoogleApiClient.Builder.(this);
-
-//        LocationRequest = LocationRequest.create()
-//            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-//            .setInterval(10 *1000)
-//            .setFastestInterval(1 * 1000);
-
-
-
-
-//        myLat = location.getLatitude();
-//        myLong=
-//        LatLng myLocation = new LatLng(myLat, myLong);
-
+    public void storeLocation(View view) {
+//        LatLng location = MapsActivity.getLocation();
     }
 }
