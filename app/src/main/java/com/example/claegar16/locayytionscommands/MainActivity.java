@@ -18,17 +18,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.common.ConnectionResult;
-//import com.google.android.gms.common.GooglePlayServicesClient;
-//import com.google.android.gms.location.LocationClient;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
+
 
 public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
@@ -38,10 +30,10 @@ public class MainActivity extends AppCompatActivity implements
     public double currentLatitude;
     public double currentLongitude;
 
-//    private GoogleMap mMap;
-//    private GoogleApiClient mGooleApiClient;
-    private double myLat;
-    private double myLong;
+
+//    private double myLat;
+//    private double myLong;
+
 //    protected LocationRequest mLocationRequest;
 //    public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
 //    public static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
@@ -49,27 +41,28 @@ public class MainActivity extends AppCompatActivity implements
 //    protected GoogleApiClient mGoogleApiClient;
 //    protected static final String TAG = "location-updates-sample";
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+
     private GoogleApiClient mGoogleApiClient;
     public static final String TAG = MapsActivity.class.getSimpleName();
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private LocationRequest LocationRequest;
 
 
-    public double getMyLat(){
-        return myLat;
-    }
-
-    public double getMyLong(){
-        return myLong;
-    }
-
-    public void setMyLat(double myLat) {
-        myLat = this.myLat;
-    }
-
-    public void setMyLong(double myLong) {
-        myLong = this.myLong;
-    }
+//    public double getMyLat(){
+//        return myLat;
+//    }
+//
+//    public double getMyLong(){
+//        return myLong;
+//    }
+//
+//    public void setMyLat(double myLat) {
+//        myLat = this.myLat;
+//    }
+//
+//    public void setMyLong(double myLong) {
+//        myLong = this.myLong;
+//    }
 
 
     @Override
@@ -87,11 +80,6 @@ public class MainActivity extends AppCompatActivity implements
                 .setFastestInterval(1 * 1000); // 1 second, in milliseconds
 
 
-        // Create the LocationRequest object
-//        LocationRequest = LocationRequest.create()
-//                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-//                .setInterval(10 * 1000)        // 10 seconds, in milliseconds
-//                .setFastestInterval(1 * 1000); // 1 second, in milliseconds
     }
 
     @Override
