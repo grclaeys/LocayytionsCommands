@@ -22,11 +22,12 @@ public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
-
         public double currentLatitude;
         public double currentLongitude;
         private GoogleApiClient mGoogleApiClient;
-        public static final String TAG = MapsActivity.class.getSimpleName();
+
+
+         public static final String TAG = MapsActivity.class.getSimpleName();
         private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
         private LocationRequest LocationRequest;
 
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void handleNewLocation(Location location) {
+
         Log.d(TAG, location.toString());
         Log.d(TAG, location.toString());
         currentLatitude = location.getLatitude();
