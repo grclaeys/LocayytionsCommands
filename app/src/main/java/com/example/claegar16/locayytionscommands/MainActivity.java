@@ -28,43 +28,12 @@ public class MainActivity extends AppCompatActivity implements
     public double currentLatitude;
     public double currentLongitude;
 
-
-//    private double myLat;
-//    private double myLong;
-
-//    protected LocationRequest mLocationRequest;
-//    public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
-//    public static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
-//            UPDATE_INTERVAL_IN_MILLISECONDS / 2;
-//    protected GoogleApiClient mGoogleApiClient;
-//    protected static final String TAG = "location-updates-sample";
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private GoogleApiClient mGoogleApiClient;
     public static final String TAG = MapsActivity.class.getSimpleName();
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private LocationRequest LocationRequest;
 
-
-//    public double getMyLat(){
-//        return myLat;
-//    }
-//
-//    public double getMyLong(){
-//        return myLong;
-//    }
-//
-//    public void setMyLat(double myLat) {
-//        myLat = this.myLat;
-//    }
-//
-//    public void setMyLong(double myLong) {
-//        myLong = this.myLong;
-//    }
-
-
-//         public static final String TAG = MapsActivity.class.getSimpleName();
-//        private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
-//        private LocationRequest LocationRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
