@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
                 .setFastestInterval(1 * 1000); // 1 second, in milliseconds
+        mGoogleApiClient.connect();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void handleNewLocation(Location location) {
+
 
         Log.d(TAG, location.toString());
         Log.d(TAG, location.toString());
