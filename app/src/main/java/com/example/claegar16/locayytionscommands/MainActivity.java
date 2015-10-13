@@ -1,5 +1,7 @@
 package com.example.claegar16.locayytionscommands;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,6 +18,7 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
 
 
 public class MainActivity extends AppCompatActivity implements
@@ -23,16 +26,24 @@ public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
-
-
     public double currentLatitude;
     public double currentLongitude;
+
+    public long savedLat;
+    public long savedLong;
+
+    public Location myLocation;
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private GoogleApiClient mGoogleApiClient;
     public static final String TAG = MapsActivity.class.getSimpleName();
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private LocationRequest LocationRequest;
+
+    public static final String LAT = "AOP_PREFS";
+    public static final String LAT_KEY = "AOP_PREFS_String";
+    public static final String LONG = "AOP_PREFS";
+    public static final String LONG_KEY = "AOP_PREFS_String";
 
 
     @Override
@@ -79,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements
         Log.d(TAG, location.toString());
         currentLatitude = location.getLatitude();
         currentLongitude = location.getLongitude();
+        myLocation = location;
     }
 
     public void onConnected(Bundle bundle) {
@@ -118,9 +130,40 @@ public class MainActivity extends AppCompatActivity implements
 
     public void storeLocation(View view) {
 
-        Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
-        TextView checkBox = (TextView) findViewById(R.id.checkBox);
-            checkBox.setText(currentLatitude + " " + currentLongitude);
+        savedLat = (long) currentLatitude;
+        savedLong = (long) currentLongitude;
+
+        SharedPreferences.Editor editor;
+
+        SharedPreferences savedLatSP = getSharedPreferences(LAT, Context.MODE_PRIVATE);
+
+            editor = savedLatSP.edit();
+            editor.putLong(LAT_KEY, savedLat);
+            editor.commit();
+
+        SharedPreferences savedLongSP = getSharedPreferences(LONG, Context.MODE_PRIVATE);
+            editor = savedLongSP.edit();
+            editor.putLong(LAT_KEY, savedLong);
+            editor.commit();
 
     }
+
+    public LatLng getSavedLocation (Context context) {
+        double ayy;
+        double lmao;
+
+        SharedPreferences savedLatSP = context.getSharedPreferences(LAT, Context.MODE_PRIVATE);
+        ayy = (double) savedLatSP.getLong(LAT_KEY, savedLat);
+
+        SharedPreferences savedLongtSP = context.getSharedPreferences(LONG, Context.MODE_PRIVATE);
+        lmao = (double) savedLatSP.getLong(LONG_KEY, savedLong);
+
+        LatLng coords = new LatLng(ayy, lmao);
+
+//        Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
+//        TextView checkBox = (TextView) findViewById(R.id.checkBox);
+////        checkBox.setText(ayy + " " + lmao);
+        return coords;
+    }
+
 }
