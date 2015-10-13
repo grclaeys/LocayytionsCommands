@@ -31,7 +31,6 @@ public class MapsActivity extends FragmentActivity implements
 
     public double issyLat = 47.5223;
     public double issyLong = 122.0288;
-    public LatLng issy = new LatLng(issyLat, issyLong);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
