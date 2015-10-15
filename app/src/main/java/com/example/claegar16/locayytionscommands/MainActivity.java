@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements
     public static final String LAT_KEY = "AOP_PREFS_String";
     public static final String LONG = "AOP_PREFS";
     public static final String LONG_KEY = "AOP_PREFS_String";
+    private static Context context;
 
 
     @Override
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MainActivity.context = getApplicationContext();
+
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -62,6 +65,11 @@ public class MainActivity extends AppCompatActivity implements
                 .setFastestInterval(1 * 1000); // 1 second, in milliseconds
         mGoogleApiClient.connect();
     }
+
+    public static Context getAppContext() {
+        return MainActivity.context;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -146,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements
             editor.putLong(LAT_KEY, savedLong);
             editor.commit();
 
+//        getSavedLocation(MainActivity.getAppContext());
     }
 
     public LatLng getSavedLocation (Context context) {
@@ -160,10 +169,15 @@ public class MainActivity extends AppCompatActivity implements
 
         LatLng coords = new LatLng(ayy, lmao);
 
-//        Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
-//        TextView checkBox = (TextView) findViewById(R.id.checkBox);
-////        checkBox.setText(ayy + " " + lmao);
+
         return coords;
     }
 
+    public void printSavedLocation(View view) {
+        LatLng coords = getSavedLocation(MainActivity.getAppContext());
+
+        Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
+        TextView checkBox = (TextView) findViewById(R.id.checkBox);
+        checkBox.setText( coords.latitude + " " + coords.longitude);
+    }
 }
