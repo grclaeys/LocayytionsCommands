@@ -164,8 +164,8 @@ public class MainActivity extends AppCompatActivity implements
         SharedPreferences savedLatSP = context.getSharedPreferences(LAT, Context.MODE_PRIVATE);
         ayy = (double) savedLatSP.getLong(LAT_KEY, savedLat);
 
-        SharedPreferences savedLongtSP = context.getSharedPreferences(LONG, Context.MODE_PRIVATE);
-        lmao = (double) savedLatSP.getLong(LONG_KEY, savedLong);
+        SharedPreferences savedLongSP = context.getSharedPreferences(LONG, Context.MODE_PRIVATE);
+        lmao = (double) savedLongSP.getLong(LONG_KEY, savedLong);
 
         LatLng coords = new LatLng(ayy, lmao);
 
