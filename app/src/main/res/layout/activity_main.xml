@@ -23,15 +23,26 @@
         android:layout_height="wrap_content"
         android:text="Print saved location"
         android:id="@+id/radioButton"
+        android:checked="false"
+        android:onClick="printSavedLocation"
         android:layout_below="@+id/checkBox"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="39dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="139dp"
-        android:checked="false"
-        android:onClick="printSavedLocation"/><![CDATA[
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Location on Map"
+        android:id="@+id/button"
+        android:layout_marginTop="104dp"
+        android:layout_below="@+id/radioButton"
+        android:layout_centerHorizontal="true"
+        android:onClick="mapButton"
+        /><![CDATA[
+
+
 
     >>>>>>> origin/master
+
 ]]>
 </RelativeLayout>

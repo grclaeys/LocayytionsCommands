@@ -1,6 +1,7 @@
 package com.example.claegar16.locayytionscommands;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -63,9 +64,8 @@ public class MainActivity extends AppCompatActivity implements
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
                 .setFastestInterval(1 * 1000); // 1 second, in milliseconds
-        mGoogleApiClient.connect();
+        mGoogleApiClient.connect(); //makes it work
     }
-
     public static Context getAppContext() {
         return MainActivity.context;
     }
@@ -76,14 +76,12 @@ public class MainActivity extends AppCompatActivity implements
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
@@ -130,7 +128,6 @@ public class MainActivity extends AppCompatActivity implements
             Log.i(TAG, "Location services connection failed with code " + connectionResult.getErrorCode());
         }
     }
-
     @Override
     public void onLocationChanged(Location location) {
         handleNewLocation(location);
@@ -156,7 +153,6 @@ public class MainActivity extends AppCompatActivity implements
 
 //        getSavedLocation(MainActivity.getAppContext());
     }
-
     public LatLng getSavedLocation (Context context) {
         double ayy;
         double lmao;
@@ -172,12 +168,15 @@ public class MainActivity extends AppCompatActivity implements
 
         return coords;
     }
-
     public void printSavedLocation(View view) {
         LatLng coords = getSavedLocation(MainActivity.getAppContext());
 
         Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
         TextView checkBox = (TextView) findViewById(R.id.checkBox);
         checkBox.setText( coords.latitude + " " + coords.longitude);
+    }
+    public void mapButton(View view){
+        Intent intent = new Intent(this,MapsActivity.class);
+        startActivity(intent);
     }
 }

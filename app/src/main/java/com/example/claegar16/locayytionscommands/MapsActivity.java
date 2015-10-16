@@ -29,9 +29,6 @@ public class MapsActivity extends FragmentActivity implements
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private LocationRequest LocationRequest;
 
-    public double issyLat = 47.5223;
-    public double issyLong = 122.0288;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +76,7 @@ public class MapsActivity extends FragmentActivity implements
 
         MarkerOptions options = new MarkerOptions()
                 .position(latLng)
-                .title("I am here!");
+                .title("You are here!");
         mMap.addMarker(options);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16)); //centers camera at the marker, and zooms in (16/21)
 
