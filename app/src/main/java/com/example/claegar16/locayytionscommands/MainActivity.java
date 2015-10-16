@@ -135,8 +135,11 @@ public class MainActivity extends AppCompatActivity implements
 
     public void storeLocation(View view) {
 
-        savedLat = (long) currentLatitude;
-        savedLong = (long) currentLongitude;
+        savedLat = (long) (currentLatitude * 1000);
+        savedLong = (long) (currentLongitude * 1000);
+
+        double ayy = (double) savedLat / 1000;
+        double lmao = (double) savedLong / 1000;
 
         SharedPreferences.Editor editor;
 
@@ -150,6 +153,10 @@ public class MainActivity extends AppCompatActivity implements
             editor = savedLongSP.edit();
             editor.putLong(LAT_KEY, savedLong);
             editor.commit();
+
+        Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
+        TextView checkBox = (TextView) findViewById(R.id.checkBox);
+        checkBox.setText( ayy + " " + lmao);
 
 //        getSavedLocation(MainActivity.getAppContext());
     }
@@ -173,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements
 
         Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
         TextView checkBox = (TextView) findViewById(R.id.checkBox);
-        checkBox.setText( coords.latitude + " " + coords.longitude);
+        checkBox.setText(coords.latitude + " " + coords.longitude);
     }
     public void mapButton(View view){
         Intent intent = new Intent(this,MapsActivity.class);
