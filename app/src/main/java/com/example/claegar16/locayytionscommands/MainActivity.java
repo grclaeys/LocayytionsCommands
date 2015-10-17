@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements
         lmao = (double) savedLongSP.getLong(LONG_KEY, savedLong);
 
         LatLng coords = new LatLng(ayy, lmao);
-        
+
         return coords;
     }
 
