@@ -138,6 +138,14 @@ public class MainActivity extends AppCompatActivity implements
         handleNewLocation(location);
     }
 
+    public void printSavedLocation(View view) {
+        LatLng coords = getSavedLocation(MainActivity.getAppContext());
+
+        Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
+        TextView radioButton = (TextView) findViewById(R.id.radioButton);
+        radioButton.setText(coords.latitude + " " + coords.longitude);
+    }
+
     public void storeLocation(View view) {
 
         savedLat = (long) (currentLatitude * 1000);
@@ -160,8 +168,8 @@ public class MainActivity extends AppCompatActivity implements
             editor.commit();
 
         Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
-        TextView checkBox = (TextView) findViewById(R.id.checkBox);
-        checkBox.setText( ayy + " " + lmao);
+        TextView radioButton2 = (TextView) findViewById(R.id.radioButton2);
+        radioButton2.setText( ayy + " " + lmao);
 
 //        getSavedLocation(MainActivity.getAppContext());
     }
@@ -176,17 +184,10 @@ public class MainActivity extends AppCompatActivity implements
         lmao = (double) savedLongSP.getLong(LONG_KEY, savedLong);
 
         LatLng coords = new LatLng(ayy, lmao);
-
-
+        
         return coords;
     }
-    public void printSavedLocation(View view) {
-        LatLng coords = getSavedLocation(MainActivity.getAppContext());
 
-        Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
-        TextView checkBox = (TextView) findViewById(R.id.checkBox);
-        checkBox.setText(coords.latitude + " " + coords.longitude);
-    }
     public void mapButton(View view){
         Intent intent = new Intent(this,MapsActivity.class);
         startActivity(intent);

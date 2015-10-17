@@ -6,17 +6,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
 
-=======
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Store location to mute phone at"
-        android:id="@+id/checkBox"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:checked="false"
-        android:onClick="storeLocation"/>
+    =======
 
     <RadioButton
         android:layout_width="wrap_content"
@@ -25,9 +15,11 @@
         android:id="@+id/radioButton"
         android:checked="false"
         android:onClick="printSavedLocation"
-        android:layout_below="@+id/checkBox"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="29dp" />
+
 
     <Button
         android:layout_width="wrap_content"
@@ -38,6 +30,18 @@
         android:layout_below="@+id/radioButton"
         android:layout_centerHorizontal="true"
         android:onClick="mapButton"
+        />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Store location to mute at"
+        android:id="@+id/radioButton2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false"
+        android:onClick="storeLocation"
         /><![CDATA[
 
 
