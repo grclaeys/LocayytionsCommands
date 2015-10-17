@@ -3,6 +3,7 @@ package com.example.claegar16.locayytionscommands;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -63,8 +64,12 @@ public class MainActivity extends AppCompatActivity implements
         LocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
-                .setFastestInterval(1 * 1000); // 1 second, in milliseconds
+                .setFastestInterval(1 * 1000); // 1 second, in millisecondsqwed
         mGoogleApiClient.connect(); //makes it work
+        MediaPlayer mp = MediaPlayer.create(context, R.raw.johncena);
+        mp.start();
+
+
     }
     public static Context getAppContext() {
         return MainActivity.context;
