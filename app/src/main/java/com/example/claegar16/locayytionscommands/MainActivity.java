@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity implements
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private LocationRequest LocationRequest;
 
-    public static final String LAT = "AOP_PREFSAYY";
-    public static final String LAT_KEY = "AOP_PREFS_StringAYY";
-    public static final String LONG = "AOP_PREFS";
-    public static final String LONG_KEY = "AOP_PREFS_String";
+    public static final String LAT = "AOP_PREFS";
+    public static final String LAT_KEY = "AOP_PREFS_String";
+    public static final String LONG = "AOP_PREFS2";
+    public static final String LONG_KEY = "AOP_PREFS_String2";
     private static Context context;
 
 
