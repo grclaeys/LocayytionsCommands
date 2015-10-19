@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements
 
     public double currentLatitude;
     public double currentLongitude;
-    public double ayy;
-    public double lmao;
+    public double ayyLat;
+    public double lmaoLong;
     public long savedLat;
     public long savedLong;
 
@@ -156,8 +156,8 @@ public class MainActivity extends AppCompatActivity implements
         savedLat = (long) (currentLatitude * 1000);
         savedLong = (long) (currentLongitude * 1000);
 
-        ayy = (double) savedLat / 1000;
-        lmao = (double) savedLong / 1000;
+        ayyLat = (double) savedLat / 1000;
+        lmaoLong = (double) savedLong / 1000;
 
         SharedPreferences.Editor editor;
 
@@ -175,27 +175,27 @@ public class MainActivity extends AppCompatActivity implements
         Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
         TextView radioButton2 = (TextView) findViewById(R.id.radioButton2);
 
-        if(ayy == 0.0 && lmao == 0.0){
+        if(ayyLat == 0.0 && lmaoLong == 0.0){
             radioButton2.setText("location unavailable, turn on location in settings");
 
         }else
-        radioButton2.setText( ayy + " " + lmao);
+        radioButton2.setText( ayyLat + " " + lmaoLong);
         
     }
     public LatLng getSavedLocation (Context context) {
 
 
         SharedPreferences savedLatSP = context.getSharedPreferences(LAT, Context.MODE_PRIVATE);
-        ayy = (double) savedLatSP.getLong(LAT_KEY, savedLat);
+        ayyLat = (double) savedLatSP.getLong(LAT_KEY, savedLat);
 
-        ayy /= 1000;
+        ayyLat /= 1000;
 
         SharedPreferences savedLongSP = context.getSharedPreferences(LONG, Context.MODE_PRIVATE);
-        lmao = (double) savedLongSP.getLong(LONG_KEY, savedLong);
+        lmaoLong = (double) savedLongSP.getLong(LONG_KEY, savedLong);
 
-        lmao /= 1000;
+        lmaoLong /= 1000;
 
-        LatLng coords = new LatLng(ayy, lmao);
+        LatLng coords = new LatLng(ayyLat, lmaoLong);
         
         return coords;
     }
