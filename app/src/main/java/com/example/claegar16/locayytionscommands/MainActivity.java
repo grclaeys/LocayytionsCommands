@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity implements
 
     public double currentLatitude;
     public double currentLongitude;
-
+    public double ayy;
+    public double lmao;
     public long savedLat;
     public long savedLong;
 
@@ -143,6 +144,10 @@ public class MainActivity extends AppCompatActivity implements
 
         Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
         TextView radioButton = (TextView) findViewById(R.id.radioButton);
+        if(coords.latitude == 0.0 && coords.longitude == 0.0){
+            radioButton.setText("location unavailable, turn on locaiton in settings");
+        }else
+
         radioButton.setText(coords.latitude + " " + coords.longitude);
     }
 
@@ -151,8 +156,8 @@ public class MainActivity extends AppCompatActivity implements
         savedLat = (long) (currentLatitude * 1000);
         savedLong = (long) (currentLongitude * 1000);
 
-        double ayy = (double) savedLat / 1000;
-        double lmao = (double) savedLong / 1000;
+        ayy = (double) savedLat / 1000;
+        lmao = (double) savedLong / 1000;
 
         SharedPreferences.Editor editor;
 
@@ -164,24 +169,31 @@ public class MainActivity extends AppCompatActivity implements
 
         SharedPreferences savedLongSP = getSharedPreferences(LONG, Context.MODE_PRIVATE);
             editor = savedLongSP.edit();
-            editor.putLong(LAT_KEY, savedLong);
+            editor.putLong(LONG_KEY, savedLong);
             editor.commit();
 
         Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
         TextView radioButton2 = (TextView) findViewById(R.id.radioButton2);
-        radioButton2.setText( ayy + " " + lmao);
 
-//        getSavedLocation(MainActivity.getAppContext());
+        if(ayy == 0.0 && lmao == 0.0){
+            radioButton2.setText("location unavailable, turn on location in settings");
+
+        }else
+        radioButton2.setText( ayy + " " + lmao);
+        
     }
     public LatLng getSavedLocation (Context context) {
-        double ayy;
-        double lmao;
+
 
         SharedPreferences savedLatSP = context.getSharedPreferences(LAT, Context.MODE_PRIVATE);
         ayy = (double) savedLatSP.getLong(LAT_KEY, savedLat);
 
+        ayy /= 1000;
+
         SharedPreferences savedLongSP = context.getSharedPreferences(LONG, Context.MODE_PRIVATE);
         lmao = (double) savedLongSP.getLong(LONG_KEY, savedLong);
+
+        lmao /= 1000;
 
         LatLng coords = new LatLng(ayy, lmao);
         
