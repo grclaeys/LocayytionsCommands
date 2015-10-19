@@ -167,10 +167,11 @@ public class MainActivity extends AppCompatActivity implements
             editor.putLong(LAT_KEY, savedLat);
             editor.commit();
 
+        SharedPreferences.Editor editor2;
         SharedPreferences savedLongSP = getSharedPreferences(LONG, Context.MODE_PRIVATE);
-            editor = savedLongSP.edit();
-            editor.putLong(LONG_KEY, savedLong);
-            editor.commit();
+            editor2 = savedLongSP.edit();
+            editor2.putLong(LONG_KEY, savedLong);
+            editor2.commit();
 
         Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
         TextView radioButton2 = (TextView) findViewById(R.id.radioButton2);
