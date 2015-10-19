@@ -209,4 +209,8 @@ public class MainActivity extends AppCompatActivity implements
         Intent intent = new Intent(this,MapsActivity.class);
         startActivity(intent);
     }
+
+    public void launchIntentService(View view){
+
+    }
 }
