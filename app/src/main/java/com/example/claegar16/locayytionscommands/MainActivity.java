@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private LocationRequest LocationRequest;
 
-    public static final String LAT = "AOP_PREFS";
-    public static final String LAT_KEY = "AOP_PREFS_String";
+    public static final String LAT = "AOP_PREFSAYY";
+    public static final String LAT_KEY = "AOP_PREFS_StringAYY";
     public static final String LONG = "AOP_PREFS";
     public static final String LONG_KEY = "AOP_PREFS_String";
     private static Context context;
@@ -159,30 +159,34 @@ public class MainActivity extends AppCompatActivity implements
         ayyLat = (double) savedLat / 1000;
         lmaoLong = (double) savedLong / 1000;
 
+
+        SharedPreferences.Editor editor2;
+
+        SharedPreferences savedLongSP = getSharedPreferences(LONG, Context.MODE_PRIVATE);
+        editor2 = savedLongSP.edit();
+        editor2.putLong(LONG_KEY, savedLong);
+        editor2.commit();
+
         SharedPreferences.Editor editor;
 
         SharedPreferences savedLatSP = getSharedPreferences(LAT, Context.MODE_PRIVATE);
 
-            editor = savedLatSP.edit();
-            editor.putLong(LAT_KEY, savedLat);
-            editor.commit();
+        editor = savedLatSP.edit();
+        editor.putLong(LAT_KEY, savedLat);
+        editor.commit();
 
-        SharedPreferences.Editor editor2;
-        SharedPreferences savedLongSP = getSharedPreferences(LONG, Context.MODE_PRIVATE);
-            editor2 = savedLongSP.edit();
-            editor2.putLong(LONG_KEY, savedLong);
-            editor2.commit();
+
 
         Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
         TextView radioButton2 = (TextView) findViewById(R.id.radioButton2);
 
-        if(ayyLat == 0.0 && lmaoLong == 0.0){
+        if (ayyLat == 0.0 && lmaoLong == 0.0) {
             radioButton2.setText("location unavailable, turn on location in settings");
 
-        }else
-        radioButton2.setText( ayyLat + " " + lmaoLong);
-        
+        } else
+            radioButton2.setText(ayyLat + " " + lmaoLong);
     }
+
     public LatLng getSavedLocation (Context context) {
 
 
