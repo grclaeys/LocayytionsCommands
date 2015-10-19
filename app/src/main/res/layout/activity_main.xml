@@ -17,8 +17,7 @@
         android:onClick="printSavedLocation"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="29dp" />
+        android:layout_alignParentStart="true" />
 
 
     <Button
@@ -37,12 +36,11 @@
         android:layout_height="wrap_content"
         android:text="Store location to mute at"
         android:id="@+id/radioButton2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:checked="false"
         android:onClick="storeLocation"
-        /><![CDATA[
+        android:layout_below="@+id/radioButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" /><![CDATA[
 
 
 
