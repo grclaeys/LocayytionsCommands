@@ -3,6 +3,7 @@ package com.example.claegar16.locayytionscommands;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
+import android.content.SharedPreferences;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -11,7 +12,7 @@ import android.content.Context;
  * TODO: Customize class - update intent actions, extra parameters and static
  * helper methods.
  */
-public class ProximityIntentService extends IntentService {
+public class ProximityService extends IntentService {
     // TODO: Rename actions, choose action names that describe tasks that this
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
     private static final String ACTION_FOO = "com.example.claegar16.locayytionscommands.action.FOO";
@@ -21,6 +22,18 @@ public class ProximityIntentService extends IntentService {
     private static final String EXTRA_PARAM1 = "com.example.claegar16.locayytionscommands.extra.PARAM1";
     private static final String EXTRA_PARAM2 = "com.example.claegar16.locayytionscommands.extra.PARAM2";
 
+    public static final String LAT = "AOP_PREFS";
+    public static final String LAT_KEY = "AOP_PREFS_String";
+    public static final String LONG = "AOP_PREFS2";
+    public static final String LONG_KEY = "AOP_PREFS_String2";
+    private static Context context;
+    public double currentLatitude;
+    public double currentLongitude;
+    public double ayyLat;
+    public double lmaoLong;
+    public long savedLat;
+    public long savedLong;
+
     /**
      * Starts this service to perform action Foo with the given parameters. If
      * the service is already performing a task this action will be queued.
@@ -29,11 +42,12 @@ public class ProximityIntentService extends IntentService {
      */
     // TODO: Customize helper method
     public static void startActionFoo(Context context, String param1, String param2) {
-        Intent intent = new Intent(context, ProximityIntentService.class);
+        Intent intent = new Intent(context, ProximityService.class);
         intent.setAction(ACTION_FOO);
         intent.putExtra(EXTRA_PARAM1, param1);
         intent.putExtra(EXTRA_PARAM2, param2);
         context.startService(intent);
+
     }
 
     /**
@@ -44,31 +58,38 @@ public class ProximityIntentService extends IntentService {
      */
     // TODO: Customize helper method
     public static void startActionBaz(Context context, String param1, String param2) {
-        Intent intent = new Intent(context, ProximityIntentService.class);
+        Intent intent = new Intent(context, ProximityService.class);
         intent.setAction(ACTION_BAZ);
         intent.putExtra(EXTRA_PARAM1, param1);
         intent.putExtra(EXTRA_PARAM2, param2);
         context.startService(intent);
+
     }
 
-    public ProximityIntentService() {
-        super("ProximityIntentService");
+    public ProximityService() {
+        super("ProximityService");
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        if (intent != null) {
-            final String action = intent.getAction();
-            if (ACTION_FOO.equals(action)) {
-                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
-                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-                handleActionFoo(param1, param2);
-            } else if (ACTION_BAZ.equals(action)) {
-                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
-                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-                handleActionBaz(param1, param2);
-            }
-        }
+        SharedPreferences savedLatSP = context.getSharedPreferences(LAT, Context.MODE_PRIVATE);
+        ayyLat = (double) savedLatSP.getLong(LAT_KEY, savedLat);
+
+        SharedPreferences savedLongSP = context.getSharedPreferences(LONG, Context.MODE_PRIVATE);
+        lmaoLong = (double) savedLongSP.getLong(LONG_KEY, savedLong);
+
+//        if (intent != null) {
+//            final String action = intent.getAction();
+//            if (ACTION_FOO.equals(action)) {
+//                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
+//                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
+//                handleActionFoo(param1, param2);
+//            } else if (ACTION_BAZ.equals(action)) {
+//                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
+//                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
+//                handleActionBaz(param1, param2);
+//            }
+//        }
     }
 
     /**

@@ -211,6 +211,8 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public void launchIntentService(View view){
-
+        Intent intent = new Intent(this, ProximityService.class);
+        startService(intent);
     }
+
 }

@@ -45,6 +45,10 @@
             android:name=".ProximityIntentService"
             android:exported="false" >
         </service>
+        <service
+            android:name=".ProximityService"
+            android:exported="false" >
+        </service>
     </application>
 
 </manifest>
