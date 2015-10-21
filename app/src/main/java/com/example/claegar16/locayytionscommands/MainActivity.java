@@ -215,4 +215,10 @@ public class MainActivity extends AppCompatActivity implements
         startService(intent);
     }
 
+    public void stopService(View view) {
+        Intent intent = new Intent(this, ProximityService.class);
+            stopService(intent);
+        }
+
+
 }
