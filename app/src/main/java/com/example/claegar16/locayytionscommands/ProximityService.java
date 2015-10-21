@@ -4,6 +4,12 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.location.Location;
+
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.maps.GoogleMap;
+
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -12,7 +18,7 @@ import android.content.SharedPreferences;
  * TODO: Customize class - update intent actions, extra parameters and static
  * helper methods.
  */
-public class ProximityService extends IntentService {
+public class ProximityService extends IntentService implements Runnable{
     // TODO: Rename actions, choose action names that describe tasks that this
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
     private static final String ACTION_FOO = "com.example.claegar16.locayytionscommands.action.FOO";
@@ -21,18 +27,28 @@ public class ProximityService extends IntentService {
     // TODO: Rename parameters
     private static final String EXTRA_PARAM1 = "com.example.claegar16.locayytionscommands.extra.PARAM1";
     private static final String EXTRA_PARAM2 = "com.example.claegar16.locayytionscommands.extra.PARAM2";
+    
 
-    public static final String LAT = "AOP_PREFS";
-    public static final String LAT_KEY = "AOP_PREFS_String";
-    public static final String LONG = "AOP_PREFS2";
-    public static final String LONG_KEY = "AOP_PREFS_String2";
-    private static Context context;
     public double currentLatitude;
     public double currentLongitude;
     public double ayyLat;
     public double lmaoLong;
     public long savedLat;
     public long savedLong;
+
+    public Location myLocation;
+
+    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    private GoogleApiClient mGoogleApiClient;
+    public static final String TAG = MapsActivity.class.getSimpleName();
+    private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
+    private LocationRequest LocationRequest;
+
+    public static final String LAT = "AOP_PREFS";
+    public static final String LAT_KEY = "AOP_PREFS_String";
+    public static final String LONG = "AOP_PREFS2";
+    public static final String LONG_KEY = "AOP_PREFS_String2";
+    private static Context context;
 
     /**
      * Starts this service to perform action Foo with the given parameters. If
@@ -41,6 +57,11 @@ public class ProximityService extends IntentService {
      * @see IntentService
      */
     // TODO: Customize helper method
+    public void run() {
+
+    }
+
+
     public static void startActionFoo(Context context, String param1, String param2) {
         Intent intent = new Intent(context, ProximityService.class);
         intent.setAction(ACTION_FOO);
@@ -57,6 +78,8 @@ public class ProximityService extends IntentService {
      * @see IntentService
      */
     // TODO: Customize helper method
+
+
     public static void startActionBaz(Context context, String param1, String param2) {
         Intent intent = new Intent(context, ProximityService.class);
         intent.setAction(ACTION_BAZ);
@@ -72,11 +95,26 @@ public class ProximityService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        LocationRequest = LocationRequest.create()
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                .setInterval(10 * 1000)        // 10 seconds, in milliseconds
+                .setFastestInterval(1 * 1000); // 1 second, in millisecondsqwed
+        mGoogleApiClient.connect(); //makes it work
+
         SharedPreferences savedLatSP = context.getSharedPreferences(LAT, Context.MODE_PRIVATE);
         ayyLat = (double) savedLatSP.getLong(LAT_KEY, savedLat);
 
         SharedPreferences savedLongSP = context.getSharedPreferences(LONG, Context.MODE_PRIVATE);
         lmaoLong = (double) savedLongSP.getLong(LONG_KEY, savedLong);
+
+        new Thread(new Runnable() {
+            public void run() {
+
+            }
+        }).start();
+    }
+
+
 
 //        if (intent != null) {
 //            final String action = intent.getAction();
@@ -90,7 +128,7 @@ public class ProximityService extends IntentService {
 //                handleActionBaz(param1, param2);
 //            }
 //        }
-    }
+    //}
 
     /**
      * Handle action Foo in the provided background thread with the provided
