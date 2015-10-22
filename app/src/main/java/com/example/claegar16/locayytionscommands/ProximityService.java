@@ -7,6 +7,7 @@ import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.util.Log;
 import com.google.android.gms.common.ConnectionResult;
@@ -74,7 +75,7 @@ public class ProximityService extends IntentService implements
         LocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
-                .setFastestInterval(1 * 1000); // 1 second, in millisecondsqwed
+                .setFastestInterval(1 * 1000); // 1 second, in milliseconds
         mGoogleApiClient.connect(); //makes it work
 
         SharedPreferences savedLatSP = context.getSharedPreferences(LAT, Context.MODE_PRIVATE);
@@ -85,8 +86,14 @@ public class ProximityService extends IntentService implements
 
         new Thread(new Runnable() {
             public void run() {
-                if(Math.abs(currentLatitude - issyLat)  )
-            }
+
+                if(Math.abs(currentLatitude - issyLat) >= .0005 && Math.abs(currentLongitude - issyLong) >= .0005) { //if close to ihs
+                    AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+                    audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+                    //turn sound off, vibrate on
+                        }
+
+                }
         }).start();
     }
 
