@@ -29,14 +29,14 @@ public class ProximityService extends IntentService implements
                               LocationListener {
     // TODO: Rename actions, choose action names that describe tasks that this
     // IntentService can  perform, e.g. ACTION_FETCH_NEW_ITEMS
-
     public double currentLatitude;
     public double currentLongitude;
     public double ayyLat;
     public double lmaoLong;
     public long savedLat;
     public long savedLong;
-
+    public double issyLat = 47.85223;
+    public double issyLong = 122.0288;
     public Location myLocation;
     private GoogleApiClient mGoogleApiClient;
     public static final String TAG = MapsActivity.class.getSimpleName();
@@ -85,7 +85,7 @@ public class ProximityService extends IntentService implements
 
         new Thread(new Runnable() {
             public void run() {
-
+                if(Math.abs(currentLatitude - issyLat)  )
             }
         }).start();
     }
@@ -132,50 +132,16 @@ public class ProximityService extends IntentService implements
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        if (connectionResult.hasResolution()) {
-            try {
-                // Start an Activity that tries to resolve the error
-                connectionResult.startResolutionForResult(, CONNECTION_FAILURE_RESOLUTION_REQUEST);
-            } catch (IntentSender.SendIntentException e) {
-                e.printStackTrace();
-            }
-        } else {
-            Log.i(TAG, "Location services connection failed with code " + connectionResult.getErrorCode());
-        }
-    }
-
-
-
-//        if (intent != null) {
-//            final String action = intent.getAction();
-//            if (ACTION_FOO.equals(action)) {
-//                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
-//                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-//                handleActionFoo(param1, param2);
-//            } else if (ACTION_BAZ.equals(action)) {
-//                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
-//                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-//                handleActionBaz(param1, param2);
+//        if (connectionResult.hasResolution()) {
+//            try {
+//                // Start an Activity that tries to resolve the error
+//                connectionResult.startResolutionForResult(, CONNECTION_FAILURE_RESOLUTION_REQUEST);
+//            } catch (IntentSender.SendIntentException e) {
+//                e.printStackTrace();
 //            }
+//        } else {
+//            Log.i(TAG, "Location services connection failed with code " + connectionResult.getErrorCode());
 //        }
-    //}
-
-    /**
-     * Handle action Foo in the provided background thread with the provided
-     * parameters.
-     */
-    private void handleActionFoo(String param1, String param2) {
-        // TODO: Handle action Foo
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-    /**
-     * Handle action Baz in the provided background thread with the provided
-     * parameters.
-     */
-    private void handleActionBaz(String param1, String param2) {
-        // TODO: Handle action Baz
-        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
