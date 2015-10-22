@@ -153,11 +153,11 @@ public class MainActivity extends AppCompatActivity implements
 
     public void storeLocation(View view) {
 
-        savedLat = (long) (currentLatitude * 1000);
-        savedLong = (long) (currentLongitude * 1000);
+        savedLat = (long) (currentLatitude * 10000);
+        savedLong = (long) (currentLongitude * 10000);
 
-        ayyLat = (double) savedLat / 1000;
-        lmaoLong = (double) savedLong / 1000;
+        ayyLat = (double) savedLat / 10000;
+        lmaoLong = (double) savedLong / 10000;
 
 
         SharedPreferences.Editor editor2;
@@ -193,12 +193,12 @@ public class MainActivity extends AppCompatActivity implements
         SharedPreferences savedLatSP = context.getSharedPreferences(LAT, Context.MODE_PRIVATE);
         ayyLat = (double) savedLatSP.getLong(LAT_KEY, savedLat);
 
-        ayyLat /= 1000;
+        ayyLat /= 10000;
 
         SharedPreferences savedLongSP = context.getSharedPreferences(LONG, Context.MODE_PRIVATE);
         lmaoLong = (double) savedLongSP.getLong(LONG_KEY, savedLong);
 
-        lmaoLong /= 1000;
+        lmaoLong /= 10000;
 
         LatLng coords = new LatLng(ayyLat, lmaoLong);
         
