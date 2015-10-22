@@ -56,9 +56,7 @@ public class ProximityService extends IntentService implements
      * @see IntentService
      */
     // TODO: Customize helper method
-    public void run() {
-
-    }
+    public void run() {}
 
     public ProximityService() {
         super("ProximityService");
