@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements
 
     public Location myLocation;
 
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+
     private GoogleApiClient mGoogleApiClient;
     public static final String TAG = MapsActivity.class.getSimpleName();
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;

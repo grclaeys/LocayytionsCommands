@@ -9,12 +9,10 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.GoogleMap;
 
 
 /**
@@ -24,17 +22,13 @@ import com.google.android.gms.maps.GoogleMap;
  * TODO: Customize class - update intent actions, extra parameters and static
  * helper methods.
  */
-public class ProximityService extends IntentService implements Runnable, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
-        LocationListener{
+public class ProximityService extends IntentService implements
+                              Runnable,
+                              GoogleApiClient.ConnectionCallbacks,
+                              GoogleApiClient.OnConnectionFailedListener,
+                              LocationListener {
     // TODO: Rename actions, choose action names that describe tasks that this
-    // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
-    private static final String ACTION_FOO = "com.example.claegar16.locayytionscommands.action.FOO";
-    private static final String ACTION_BAZ = "com.example.claegar16.locayytionscommands.action.BAZ";
-
-    // TODO: Rename parameters
-    private static final String EXTRA_PARAM1 = "com.example.claegar16.locayytionscommands.extra.PARAM1";
-    private static final String EXTRA_PARAM2 = "com.example.claegar16.locayytionscommands.extra.PARAM2";
-
+    // IntentService can  perform, e.g. ACTION_FETCH_NEW_ITEMS
 
     public double currentLatitude;
     public double currentLongitude;
@@ -44,8 +38,6 @@ public class ProximityService extends IntentService implements Runnable, GoogleA
     public long savedLong;
 
     public Location myLocation;
-
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private GoogleApiClient mGoogleApiClient;
     public static final String TAG = MapsActivity.class.getSimpleName();
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
@@ -65,34 +57,6 @@ public class ProximityService extends IntentService implements Runnable, GoogleA
      */
     // TODO: Customize helper method
     public void run() {
-
-    }
-
-
-    public static void startActionFoo(Context context, String param1, String param2) {
-        Intent intent = new Intent(context, ProximityService.class);
-        intent.setAction(ACTION_FOO);
-        intent.putExtra(EXTRA_PARAM1, param1);
-        intent.putExtra(EXTRA_PARAM2, param2);
-        context.startService(intent);
-
-    }
-
-    /**
-     * Starts this service to perform action Baz with the given parameters. If
-     * the service is already performing a task this action will be queued.
-     *
-     * @see IntentService
-     */
-    // TODO: Customize helper method
-
-
-    public static void startActionBaz(Context context, String param1, String param2) {
-        Intent intent = new Intent(context, ProximityService.class);
-        intent.setAction(ACTION_BAZ);
-        intent.putExtra(EXTRA_PARAM1, param1);
-        intent.putExtra(EXTRA_PARAM2, param2);
-        context.startService(intent);
 
     }
 
@@ -142,7 +106,7 @@ public class ProximityService extends IntentService implements Runnable, GoogleA
         Log.i(TAG, "Location services connected.");
         Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if(location == null){
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, LocationRequest, this);
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, LocationRequest, (com.google.android.gms.location.LocationListener) this);
         }
         else {
             handleNewLocation(location);
@@ -154,11 +118,26 @@ public class ProximityService extends IntentService implements Runnable, GoogleA
     }
 
     @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
+    @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         if (connectionResult.hasResolution()) {
             try {
                 // Start an Activity that tries to resolve the error
-                connectionResult.startResolutionForResult(this, CONNECTION_FAILURE_RESOLUTION_REQUEST);
+                connectionResult.startResolutionForResult(, CONNECTION_FAILURE_RESOLUTION_REQUEST);
             } catch (IntentSender.SendIntentException e) {
                 e.printStackTrace();
             }
