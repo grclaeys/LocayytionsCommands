@@ -36,7 +36,7 @@ public class ProximityService extends IntentService implements
     private GoogleApiClient mGoogleApiClient;
     public static final String TAG = MapsActivity.class.getSimpleName();
     private LocationRequest LocationRequest;
-    private static Context context;
+    private Context context = this;
 
     /**
      * Starts this service to perform action Foo with the given parameters. If
@@ -45,7 +45,6 @@ public class ProximityService extends IntentService implements
      * @see IntentService
      */
     // TODO: Customize helper method
-    public void run() {}
 
     public ProximityService() {
         super("ProximityService");
@@ -53,6 +52,9 @@ public class ProximityService extends IntentService implements
 
     @Override
     protected void onHandleIntent(Intent intent) {
+
+//        context = this;
+
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -77,6 +79,8 @@ public class ProximityService extends IntentService implements
                 }
         }).start();
     }
+
+    public void run() {}
 
     private void handleNewLocation(Location location) {
 
