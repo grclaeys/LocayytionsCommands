@@ -35,11 +35,8 @@ public class MainActivity extends AppCompatActivity implements
     public double lmaoLong;
     public long savedLat;
     public long savedLong;
-    public double issyLat = 47.85223;
-    public double issyLong = 122.0288;
     public Location myLocation;
-
-
+    
     private GoogleApiClient mGoogleApiClient;
     public static final String TAG = MapsActivity.class.getSimpleName();
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
