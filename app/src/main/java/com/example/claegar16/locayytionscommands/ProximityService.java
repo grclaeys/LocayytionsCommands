@@ -76,7 +76,6 @@ public class ProximityService extends IntentService implements
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
                 .setFastestInterval(1 * 1000); // 1 second, in milliseconds
-        mGoogleApiClient.connect(); //makes it work
 
         SharedPreferences savedLatSP = context.getSharedPreferences(LAT, Context.MODE_PRIVATE);
         ayyLat = (double) savedLatSP.getLong(LAT_KEY, savedLat);
