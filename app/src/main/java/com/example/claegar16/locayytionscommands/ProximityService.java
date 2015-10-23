@@ -3,8 +3,6 @@ package com.example.claegar16.locayytionscommands;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
-import android.content.IntentSender;
-import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.media.AudioManager;
@@ -32,22 +30,12 @@ public class ProximityService extends IntentService implements
     // IntentService can  perform, e.g. ACTION_FETCH_NEW_ITEMS
     public double currentLatitude;
     public double currentLongitude;
-    public double ayyLat;
-    public double lmaoLong;
-    public long savedLat;
-    public long savedLong;
     public double issyLat = 47.85223;
     public double issyLong = 122.0288;
     public Location myLocation;
     private GoogleApiClient mGoogleApiClient;
     public static final String TAG = MapsActivity.class.getSimpleName();
-    private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private LocationRequest LocationRequest;
-
-    public static final String LAT = "AOP_PREFS";
-    public static final String LAT_KEY = "AOP_PREFS_String";
-    public static final String LONG = "AOP_PREFS2";
-    public static final String LONG_KEY = "AOP_PREFS_String2";
     private static Context context;
 
     /**
@@ -76,12 +64,6 @@ public class ProximityService extends IntentService implements
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
                 .setFastestInterval(1 * 1000); // 1 second, in milliseconds
-
-        SharedPreferences savedLatSP = context.getSharedPreferences(LAT, Context.MODE_PRIVATE);
-        ayyLat = (double) savedLatSP.getLong(LAT_KEY, savedLat);
-
-        SharedPreferences savedLongSP = context.getSharedPreferences(LONG, Context.MODE_PRIVATE);
-        lmaoLong = (double) savedLongSP.getLong(LONG_KEY, savedLong);
 
         new Thread(new Runnable() {
             public void run() {

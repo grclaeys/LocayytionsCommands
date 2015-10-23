@@ -3,6 +3,7 @@ package com.example.claegar16.locayytionscommands;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,7 +35,8 @@ public class MainActivity extends AppCompatActivity implements
     public double lmaoLong;
     public long savedLat;
     public long savedLong;
-
+    public double issyLat = 47.85223;
+    public double issyLong = 122.0288;
     public Location myLocation;
 
 
@@ -174,9 +176,7 @@ public class MainActivity extends AppCompatActivity implements
         editor = savedLatSP.edit();
         editor.putLong(LAT_KEY, savedLat);
         editor.commit();
-
-
-
+        
         Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
         TextView radioButton2 = (TextView) findViewById(R.id.radioButton2);
 
@@ -185,6 +185,9 @@ public class MainActivity extends AppCompatActivity implements
 
         } else
             radioButton2.setText(ayyLat + " " + lmaoLong);
+             AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+             audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+            //turn sound off, vibrate on
     }
 
     public LatLng getSavedLocation (Context context) {
