@@ -36,7 +36,7 @@ public class ProximityService extends IntentService implements
     private GoogleApiClient mGoogleApiClient;
     public static final String TAG = MapsActivity.class.getSimpleName();
     private LocationRequest LocationRequest;
-    private static Context context;
+    private Context context = this;
 
     /**
      * Starts this service to perform action Foo with the given parameters. If
@@ -53,6 +53,8 @@ public class ProximityService extends IntentService implements
 
     @Override
     protected void onHandleIntent(Intent intent) {
+
+
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -68,11 +70,11 @@ public class ProximityService extends IntentService implements
         new Thread(new Runnable() {
             public void run() {
 
-                if(Math.abs(currentLatitude - issyLat) >= .0005 && Math.abs(currentLongitude - issyLong) >= .0005) { //if close to ihs
-                    AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-                    audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
-                    //turn sound off, vibrate on
-                        }
+                    if (Math.abs(currentLatitude - issyLat) >= .0005 && Math.abs(currentLongitude - issyLong) >= .0005) { //if close to ihs
+                        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+                        audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+                       //turn sound off, vibrate on
+                    }
 
                 }
         }).start();

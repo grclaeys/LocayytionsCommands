@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements
     public long savedLat;
     public long savedLong;
     public Location myLocation;
-    
+
     private GoogleApiClient mGoogleApiClient;
     public static final String TAG = MapsActivity.class.getSimpleName();
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
