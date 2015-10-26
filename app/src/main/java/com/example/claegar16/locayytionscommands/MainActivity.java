@@ -3,7 +3,7 @@ package com.example.claegar16.locayytionscommands;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.AudioManager;
+
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.GoogleMap;
+
 import com.google.android.gms.maps.model.LatLng;
 
 
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements
         Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
         TextView radioButton = (TextView) findViewById(R.id.radioButton);
         if(coords.latitude == 0.0 && coords.longitude == 0.0){
-            radioButton.setText("location unavailable, turn on locaiton in settings");
+            radioButton.setText("location unavailable, turn on location in settings");
         }else
 
         radioButton.setText(coords.latitude + " " + coords.longitude);
@@ -182,8 +182,6 @@ public class MainActivity extends AppCompatActivity implements
 
         } else
             radioButton2.setText(ayyLat + " " + lmaoLong);
-             AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-             audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
             //turn sound off, vibrate on
     }
 
