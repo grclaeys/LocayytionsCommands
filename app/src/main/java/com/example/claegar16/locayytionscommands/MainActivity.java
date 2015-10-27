@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
                 .setFastestInterval(1 * 1000); // 1 second, in millisecondsqwed
         mGoogleApiClient.connect(); //makes it work
-        MediaPlayer mp = MediaPlayer.create(context, R.raw.johncena);
+        MediaPlayer mp = MediaPlayer.create(context, /*R.raw.johncena*/R.raw.tetris);
         mp.start();
 
 
